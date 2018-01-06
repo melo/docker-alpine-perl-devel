@@ -1,5 +1,7 @@
 # alpine-perl-devel #
 
+[![Docker Pulls](https://img.shields.io/docker/pulls/melopt/alpine-perl-devel.svg)]()
+[![Docker Build Status](https://img.shields.io/docker/build/melopt/alpine-perl-devel.svg)]()
 
 This is a Docker image based on `alpine` that adds my essential tools to build perl projects.
 
