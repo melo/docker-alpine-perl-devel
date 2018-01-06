@@ -1,12 +1,19 @@
-# Alpine-Devel-Base #
+# alpine-perl-devel #
 
-This is a Docker image based on `alpine` that adds my essential build tools.
 
-It is mostly focused on providing a decent Perl build environment, including:
+This is a Docker image based on `alpine` that adds my essential tools to build perl projects.
 
-* perl-5.26.1
-* cpanm
-* carton
+This includes:
+
+* [perl-5.26.1](https://metacpan.org/release/perl);
+* [cpanm](https://metacpan.org/release/App-cpanminus);
+* [carton](https://metacpan.org/release/Carton).
+
+Some common *-dev libs are also included:
+
+* openssl-dev: allows install of [Net::SSLeay](https://metacpan.org/release/Net-SSLeay);
+* zlib-dev: for [Gzip::Faster](https://metacpan.org/release/Gzip-Faster);
+* expat-dev: for all Expat-based XML parsers.
 
 
 # Recommended usage #
