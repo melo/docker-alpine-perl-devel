@@ -15,7 +15,8 @@ Some common *-dev libs are also included:
 
 * openssl-dev: allows install of [Net::SSLeay](https://metacpan.org/release/Net-SSLeay);
 * zlib-dev: for [Gzip::Faster](https://metacpan.org/release/Gzip-Faster);
-* expat-dev: for all Expat-based XML parsers.
+* expat-dev: for all Expat-based XML parsers;
+* libxml2-dev: allows install of [XML::LibXML](https://metacpan.org/release/XML-LibXML) and friends.
 
 
 # Recommended usage #
