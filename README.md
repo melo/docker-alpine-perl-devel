@@ -26,7 +26,7 @@ My usual project `Dockerfile` uses this image as the first stage, to build the a
 An example:
 
 ```
-FROM melopt/alpine-devel-base AS build
+FROM melopt/alpine-perl-devel AS build
 
 ## Add any extra build time libs that you might need
 ## RUN apk --no-cache add <packages>
@@ -34,7 +34,7 @@ FROM melopt/alpine-devel-base AS build
 COPY cpanfile cpanfile.snapshot /app/
 RUN  cd /app && carton install --deployment && rm -rf local/cache ~/.cpanm*
 
-FROM alpine
+FROM melopt/alpine-perl-runtime
 
 ## Add all run time libs and utils that you might need
 ## RUN apk --no-cache add <packages>
@@ -49,7 +49,7 @@ Enjoy your small Perl project images.
 
 # Repository #
 
-This image source repository is at https://github.com/melo/docker-alpine-devel-base.
+This image source repository is at https://github.com/melo/docker-alpine-perl-devel.
 
 
 # Author #
