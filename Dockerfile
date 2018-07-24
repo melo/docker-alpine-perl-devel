@@ -1,4 +1,4 @@
-FROM alpine:3.4
+FROM alpine:3.8
 
 RUN apk --no-cache add curl wget perl make ca-certificates build-base  \
                        zlib-dev perl-dev openssl openssl-dev expat-dev \
