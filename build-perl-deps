@@ -1,0 +1,31 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+die "FATAL: no cpanfile found\n" unless -e 'cpanfile';
+
+my @carton_cmd = ('carton', 'install' );
+push @carton_cmd, '--deployment' if -e 'cpanfile.snapshot';
+
+
+run_carton();
+
+print "\n*** ERROR: command '@carton_cmd' exit code ", ($?>>8), ", retrying\n";
+run_carton();
+
+print "\n*** ERROR: command '@carton_cmd' exit code ", ($?>>8), ", second failure, aborting\n";
+print "             build.log output follows:\n\n";
+system('/bin/cat', "$ENV{HOME}/.cpanm/build.log");
+print "\n\n*** End of build.log file";
+
+exit(1);
+
+
+sub run_carton {
+  system(@carton_cmd);
+  if ($? == 0) {
+    exec('/bin/rm', '-rf', 'local/cache', "$ENV{HOME}/.cpanm*");
+    die "FATAL: failed to exec() '/bin/rm': $?";
+  }
+}

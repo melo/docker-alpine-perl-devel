@@ -31,8 +31,8 @@ FROM melopt/alpine-perl-devel AS build
 ## Add any extra build time libs that you might need
 ## RUN apk --no-cache add <packages>
 
-COPY cpanfile cpanfile.snapshot /app/
-RUN  cd /app && carton install --deployment && rm -rf local/cache ~/.cpanm*
+COPY cpanfile* /app/
+RUN  cd /app && build-perl-deps
 
 FROM melopt/alpine-perl-runtime
 
@@ -45,6 +45,24 @@ CMD ["your-app-startup"]
 ```
 
 Enjoy your small Perl project images.
+
+
+# Extras
+
+## build-perl-deps ##
+
+A utility script is included, `build-perl-deps`, that checks
+the current directory for a `cpanfile` and optionally
+for a `cpanfile.snapshot`.
+
+If found, it will use Carton to install your dependencies.
+
+If all goes well, it will cleanup build and cache files to
+keep your images small.
+
+If an error is detected during the build process, a second
+install is attempted, with`--verbose` and if the second one
+also fails, the content of the ´cpanm` `build.log` file is printed.
 
 
 # Repository #
