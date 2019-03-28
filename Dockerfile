@@ -1,8 +1,4 @@
-FROM alpine:3.4
+FROM melopt/alpine-perl-runtime
 
-RUN apk --no-cache add curl wget perl make ca-certificates build-base  \
-                       zlib-dev perl-dev openssl openssl-dev expat-dev \
-                       gnupg libxml2 libxml2-dev libxml2-utils         \
-    && curl -L https://cpanmin.us | perl - App::cpanminus              \
-    && cpanm -n -q Carton                                              \
-    && rm -rf ~/.cpanm
+RUN apk --no-cache add build-base zlib-dev perl-dev openssl-dev        \
+                       expat-dev libxml2-dev
