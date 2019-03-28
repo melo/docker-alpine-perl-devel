@@ -29,15 +29,15 @@ An example:
 FROM melopt/alpine-perl-devel AS build
 
 ## Add any extra build time libs that you might need
-## RUN apk --no-cache add <packages>
+## RUN apk --no-cache add <build-time-needed-packages>
 
 COPY cpanfile* /app/
 RUN  cd /app && build-perl-deps
 
 FROM melopt/alpine-perl-runtime
 
-## Add all run time libs and utils that you might need
-## RUN apk --no-cache add <packages>
+## Add libs and utils that your app might need during runtime
+## RUN apk --no-cache add <runtime-needed-packages>
 
 COPY --from=build /app /app
 
